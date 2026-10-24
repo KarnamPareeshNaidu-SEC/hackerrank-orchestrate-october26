@@ -1,5 +1,133 @@
 # HackerRank Orchestrate - October 2026
+# AI-Powered Deletion Audit Agent
 
+## 1. Project Overview
+
+The AI-Powered Deletion Audit Agent is a Python-based project designed to analyse data deletion requests and generate structured audit reports.
+
+When a user requests data deletion, their information may exist across multiple systems, including databases, search indexes, analytics platforms, support systems, backups, and data flows. This project processes available datasets and evidence to determine the deletion status and record relevant verification steps.
+
+## 2. Objectives
+
+- Process data deletion requests from CSV files.
+- Identify related records using available identity information.
+- Analyse system activity and supporting evidence.
+- Classify deletion requests based on the implemented decision logic.
+- Generate structured audit steps in JSON format.
+- Validate and export results to a CSV file.
+
+## 3. Technologies Used
+
+- **Python** — application logic and data processing.
+- **Pandas** — reading and processing tabular datasets.
+- **CSV** — input datasets and output reports.
+- **JSON** — structured audit-step representation.
+- **Git** — source-code version control.
+
+## 4. Project Structure
+
+```text
+hackerrank-orchestrate-october26/
+├── code/
+│   ├── main.py
+│   ├── common.py
+│   ├── data_loader.py
+│   ├── inspect_data.py
+│   ├── identity_resolver.py
+│   ├── decision_engine.py
+│   ├── evidence_analyzer.py
+│   └── output_validator.py
+├── dataset/
+│   ├── deletion_requests.csv
+│   ├── sample_deletion_requests.csv
+│   ├── sample_output.csv
+│   └── supporting datasets and evidence
+├── README.md
+├── requirements.txt
+└── output.csv
+```
+
+*Note: `output.csv` is generated when the application runs. The `requirements.txt` file should be included if your project uses one.*
+
+## 5. How the Project Works
+
+1. **Data Loading:** Reads deletion requests and supporting datasets.
+2. **Identity Resolution:** Finds relevant identity information using available identifiers.
+3. **Activity Analysis:** Examines system activity records related to deletion requests.
+4. **Evidence Analysis:** Searches available evidence for relevant information.
+5. **Decision Engine:** Determines the deletion status and constructs audit steps using the implemented logic.
+6. **Output Generation:** Writes the results to `output.csv`.
+7. **Output Validation:** Checks the generated output against the required format and validation criteria.
+
+## 6. Deletion Statuses
+
+- **COMPLETE:** The request is classified as complete according to the implemented decision logic and expected verification conditions.
+- **INCOMPLETE:** The request requires further action or verification.
+- **NOT_APPLICABLE:** The deletion process does not apply to the request.
+
+## 7. Output Format
+
+The generated CSV contains the following columns:
+
+| Column | Description |
+|---|---|
+| `case_id` | Unique identifier for the deletion request |
+| `deletion_status` | Status assigned to the request |
+| `steps_json` | JSON-formatted audit and verification steps |
+
+Each audit step can include the step number, phase, system ID, resource ID, operation, state, and associated evidence ID.
+
+## 8. Installation and Execution
+
+### Prerequisites
+
+- Python 3 installed.
+- pip package manager.
+
+### Setup
+
+Clone the repository or download the project ZIP, then open a terminal in the project root.
+
+Install the dependencies if `requirements.txt` is available:
+
+```bash
+pip install -r requirements.txt
+```
+
+Alternatively, if pandas is the only external dependency:
+
+```bash
+pip install pandas
+```
+
+### Run the application
+
+```bash
+python code/main.py
+```
+
+After execution, check `output.csv` in the project root and review the validation messages printed in the terminal.
+
+## 9. Limitations
+
+- Results depend on the quality and completeness of the input datasets.
+- Incorrect or missing identity information may affect record matching.
+- The decision engine must be maintained as requirements and evidence formats change.
+- Sample-specific decision handling does not automatically generalise to every new deletion request.
+- The application generates audit results; it does not directly delete data from production systems.
+
+## 10. Future Enhancements
+
+- Implement fully evidence-driven decision-making for unseen requests.
+- Integrate with real systems to execute and independently verify deletion operations.
+- Add automated unit and integration tests.
+- Improve identity matching and evidence validation.
+- Introduce an LLM to assist with interpreting unstructured evidence, with appropriate validation and safeguards.
+- Add structured logging and a more detailed audit dashboard.
+
+## 11. Conclusion
+
+The AI-Powered Deletion Audit Agent demonstrates a modular approach to processing deletion requests, analysing supporting information, producing structured audit records, and validating results. It provides a foundation for developing more comprehensive and evidence-driven data deletion auditing systems.
 ## Ghost Data Still Exists
 
 Build an AI agent that audits whether a user's personal data was actually deleted.
